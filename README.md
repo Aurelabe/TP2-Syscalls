@@ -163,7 +163,7 @@ sudo sysdig proc.name=cat 2>&1 | grep write
 ![Capture d'écran 2025-03-13 132001](https://github.com/user-attachments/assets/f9c11250-f406-4d69-9181-ccec8a0a4cb7)
 
 
-**Tracer les syscalls de l'utilisateur courant**
+### **Tracer les syscalls de l'utilisateur courant**
 
 #### **Commande utilisée :**  
 ```sh
