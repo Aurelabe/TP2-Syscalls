@@ -1,4 +1,4 @@
-## **Partie 1 : Anatomy of a Program**
+## **Partie 1 : Learn**
 
 ### **1. Anatomy of a Program**
 
