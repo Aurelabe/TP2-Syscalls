@@ -129,7 +129,6 @@ strace -c curl example.org
 
 Voici le compte rendu pour la partie "Observation des syscalls avec `sysdig`" :
 
----
 
 ## **2- sysdig**
 
