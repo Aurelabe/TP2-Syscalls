@@ -179,6 +179,18 @@ sudo sysdig -w curl.scap proc.name=curl
 
 ## **Part 3 : Service Hardening**
 
+## Liste des syscalls passés par NGINX
+
+- `open()`
+- `read()`
+- `write()`
+- `close()`
+- `mmap()`
+- `socket()`
+- `bind()`
+- `listen()`
+- `accept()`
+- `select()`
 
 ### Fichier `nginx.service` modifié
 
@@ -207,16 +219,3 @@ SystemCallFilter=clock_gettime adjtimex settimeofday time syslog ioperm iopl
 [Install]
 WantedBy=multi-user.target
 ```
-
-## Liste des syscalls passés par NGINX
-
-- `open()`
-- `read()`
-- `write()`
-- `close()`
-- `mmap()`
-- `socket()`
-- `bind()`
-- `listen()`
-- `accept()`
-- `select()`
