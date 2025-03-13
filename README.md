@@ -179,7 +179,7 @@ sudo sysdig -w curl.scap proc.name=curl
 
 ## **Part 3 : Service Hardening**
 
-## Liste des syscalls passés par NGINX
+### Liste des syscalls passés par NGINX
 
 - `open()`
 - `read()`
