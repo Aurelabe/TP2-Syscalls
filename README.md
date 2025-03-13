@@ -208,7 +208,7 @@ SystemCallFilter=clock_gettime adjtimex settimeofday time syslog ioperm iopl
 WantedBy=multi-user.target
 ```
 
-## 2. Liste des syscalls passés par NGINX
+## Liste des syscalls passés par NGINX
 
 - `open()`
 - `read()`
