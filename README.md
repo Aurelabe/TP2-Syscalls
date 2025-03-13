@@ -176,3 +176,44 @@ sudo sysdig user.name=$USER
 ```sh
 sudo sysdig -w curl.scap proc.name=curl
 ```
+
+## **Part 3 : Service Hardening**
+
+
+
+### Fichier `nginx.service` modifié
+
+```ini
+[Unit]
+Description=The nginx HTTP and reverse proxy server
+After=network.target
+
+[Service]
+Type=forking
+ExecStartPre=/usr/bin/rm -f /run/nginx.pid
+ExecStartPre=/usr/sbin/nginx -t
+ExecStart=/usr/sbin/nginx -g 'daemon off;'
+ExecReload=/usr/sbin/nginx -s reload
+ExecStop=/usr/sbin/nginx -s quit
+PIDFile=/run/nginx.pid
+SystemCallFilter=~@mount @cpu-emulation @sockets @networking @process @file-system
+LimitNOFILE=65535
+LimitNPROC=65535
+LimitMEMLOCK=infinity
+
+[Install]
+WantedBy=multi-user.target
+```
+
+## 2. Liste des syscalls passés par NGINX
+
+- `open()`
+- `read()`
+- `write()`
+- `close()`
+- `mmap()`
+- `socket()`
+- `bind()`
+- `listen()`
+- `accept()`
+- `select()`
