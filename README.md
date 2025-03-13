@@ -180,26 +180,29 @@ sudo sysdig -w curl.scap proc.name=curl
 ## **Part 3 : Service Hardening**
 
 
-
 ### Fichier `nginx.service` modifié
 
 ```ini
 [Unit]
 Description=The nginx HTTP and reverse proxy server
-After=network.target
+After=network-online.target remote-fs.target nss-lookup.target
+Wants=network-online.target
 
 [Service]
 Type=forking
+PIDFile=/run/nginx.pid
+# Nginx will fail to start if /run/nginx.pid already exists but has the wrong
+# SELinux context. This might happen when running `nginx -t` from the cmdline.
+# https://bugzilla.redhat.com/show_bug.cgi?id=1268621
 ExecStartPre=/usr/bin/rm -f /run/nginx.pid
 ExecStartPre=/usr/sbin/nginx -t
-ExecStart=/usr/sbin/nginx -g 'daemon off;'
+ExecStart=/usr/sbin/nginx
 ExecReload=/usr/sbin/nginx -s reload
-ExecStop=/usr/sbin/nginx -s quit
-PIDFile=/run/nginx.pid
-SystemCallFilter=~@mount @cpu-emulation @sockets @networking @process @file-system
-LimitNOFILE=65535
-LimitNPROC=65535
-LimitMEMLOCK=infinity
+KillSignal=SIGQUIT
+TimeoutStopSec=5
+KillMode=mixed
+PrivateTmp=true
+SystemCallFilter=clock_gettime adjtimex settimeofday time syslog ioperm iopl
 
 [Install]
 WantedBy=multi-user.target
