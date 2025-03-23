@@ -217,7 +217,7 @@ KillSignal=SIGQUIT
 TimeoutStopSec=5
 KillMode=mixed
 PrivateTmp=true
-SystemCallFilter=epoll_wait read write open close ioctl pread64 readv writev socket connect sendto recvfrom setsockopt getsockopt unlink gettimeofday epoll_ctl accept4 pwritev brk mmap access stat fstat mprotect arch_prctl set_tid_address set_robust_list rt_sigaction rt_sigprocmask getrlimit lseek uname geteuid poll recvmsg epoll_create futex getuid bind listen getsockname munmap mkdir fcntl pwrite64 socketpair clone setgid rt_sigsuspend setgroups wait4 setuid prctl eventfd2 io_setup io_destroy io_getevents io_submit io_cancel sendmsg setitimer shutdown sendfile
+SystemCallFilter=epoll_wait accept4 epoll_ctl openat fstat setsockopt writev sendfile write close setsockopt
 [Install]
 WantedBy=multi-user.target
 ```
