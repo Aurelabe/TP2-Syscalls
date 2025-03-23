@@ -181,16 +181,19 @@ sudo sysdig -w curl.scap proc.name=curl
 
 ### Liste des syscalls passés par NGINX
 
-- `open()`
-- `read()`
-- `write()`
-- `close()`
-- `mmap()`
-- `socket()`
-- `bind()`
-- `listen()`
-- `accept()`
-- `select()`
+- `epoll_wait`
+- `accept4`
+- `epoll_ctl`
+- `recvfrom`
+- `newfstatat`
+- `openat`
+- `fstat`
+- `setsockopt`
+- `writev`
+- `sendfile`
+- `write`
+- `close`
+- `setsockopt`
 
 ### Fichier `nginx.service` modifié
 
