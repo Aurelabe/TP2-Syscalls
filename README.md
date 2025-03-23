@@ -217,7 +217,8 @@ KillSignal=SIGQUIT
 TimeoutStopSec=5
 KillMode=mixed
 PrivateTmp=true
-SystemCallFilter=epoll_wait accept4 epoll_ctl openat fstat setsockopt writev sendfile write close setsockopt
+SystemCallFilter=epoll_wait accept4 epoll_ctl openat fstat setsockopt writev sendfile write close
+
 [Install]
 WantedBy=multi-user.target
 ```
